@@ -1,15 +1,15 @@
 package com.investree.demo.model;
 
+
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
-@Table(name = "pembeli")
-public class Pembeli implements Serializable {
+@Table(name = "users")
+public class UserDetail implements Serializable {
 
     @Id
     @Column(name="id")
@@ -19,20 +19,11 @@ public class Pembeli implements Serializable {
     @Column(name = "nama", nullable = false, length = 45)
     private String nama;
 
-    @Column(name = "hp",  length = 15)
-    private String hp;
-
-    @Column(name = "jk",  length = 15)
-    private String jk;
-
     @Column(name = "alamat", columnDefinition="TEXT")
     private String alamat;
 
-    @OneToOne(mappedBy = "pembeli")
-    private PembeliDetail pembelidetail;
-
-    @OneToMany(mappedBy = "pembeli")
-    private List<Transaksi> transaksi;
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
+    private User user;
 }
+

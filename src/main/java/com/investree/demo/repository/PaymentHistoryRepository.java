@@ -1,11 +1,11 @@
 package com.investree.demo.repository;
-import com.investree.demo.model.PembeliDetail;
+
+
+import com.investree.demo.model.PaymentHistory;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
-public interface PembeliDetailRepo extends PagingAndSortingRepository<PembeliDetail, Long> {
-
+public interface PaymentHistoryRepository extends PagingAndSortingRepository<PaymentHistory, Long> {
 }

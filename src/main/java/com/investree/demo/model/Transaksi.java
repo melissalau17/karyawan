@@ -1,26 +1,39 @@
 package com.investree.demo.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Data
 @Entity
-@Table(name = "transaksi")
-public class Transaksi  extends AbstractDate implements Serializable {
+@Table(name = "users")
+public class Transaksi implements Serializable {
+
     @Id
     @Column(name="id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "barang_id")
-    Barang barang;
+    @Column(name = "tenor", nullable = false, length = 3)
+    private Integer tenor;
 
-    @ManyToOne
-    @JoinColumn(name = "pembeli_id")
-    Pembeli pembeli;
+    @Column(name = "total_pinjaman")
+    private Double totalPinjaman;
+
+    @Column(name = "bunga_persen")
+    private Double bungaPersen;
+
+    @Column(name = "status", nullable = false, length = 50)
+    private String status;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_peminjam", referencedColumnName = "id")
+    private User peminjam;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_meminjam", referencedColumnName = "id")
+    private User meminjam;
 }
+
