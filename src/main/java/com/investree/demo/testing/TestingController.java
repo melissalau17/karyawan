@@ -18,7 +18,7 @@ public class TestingController {
     private TestRestTemplate restTemplate;
 
     @Test
-    public void restTemplateSaveBarang() throws Exception {
+    public void restTemplateSave() throws Exception {
         HttpHeaders headers = new HttpHeaders();
         headers.set("Accept", "*/*");
         headers.set("Content-Type", "application/json");
