@@ -28,12 +28,12 @@ public class Transaksi implements Serializable {
     @Column(name = "status", nullable = false, length = 50)
     private String status;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_peminjam", referencedColumnName = "id")
+    @ManyToOne(targetEntity=User.class)
+    @JoinColumn(name="id_peminjam")
     private User peminjam;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_meminjam", referencedColumnName = "id")
+    @ManyToOne(targetEntity=User.class)
+    @JoinColumn(name="id_meminjam")
     private User meminjam;
 }
 
